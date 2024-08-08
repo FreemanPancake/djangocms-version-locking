@@ -75,7 +75,7 @@ class VersionToolbarOverrideTestCase(CMSTestCase):
         self.assertFalse(edit_button.disabled)
         self.assertListEqual(
             edit_button.extra_classes,
-            ['cms-btn-action', 'cms-versioning-js-edit-btn']
+            ['cms-btn-action', 'cms-form-post-method', 'cms-versioning-js-edit-btn']
         )
 
     def test_edit_button_when_content_is_locked_users_full_name_used(self):

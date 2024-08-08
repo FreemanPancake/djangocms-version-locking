@@ -1,13 +1,11 @@
 from django.utils.translation import gettext_lazy as _
 
-from djangocms_moderation import models as moderation_model
-from djangocms_moderation.models import version_is_unlocked_for_moderation
-from djangocms_moderation.helpers import (
-    get_moderated_children_from_placeholder,
-)
-from djangocms_versioning import constants, models
-from djangocms_versioning.helpers import get_latest_draft_version, version_is_locked
+from djangocms_versioning import models
 from djangocms_versioning.exceptions import ConditionFailed
+from djangocms_versioning.helpers import (
+    get_latest_draft_version,
+    version_is_locked,
+)
 
 
 def _is_version_locked(message):
