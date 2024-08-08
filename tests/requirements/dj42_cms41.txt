@@ -1,0 +1,10 @@
+-r requirements_base.txt
+
+Django>=4.2,<5.0
+
+https://github.com/django-cms/django-cms/tarball/release/4.1.x#egg=django-cms
+
+https://github.com/django-cms/djangocms-text-ckeditor/tarball/5.1.5#egg=djangocms-text-ckeditor
+https://github.com/django-cms/djangocms-versioning/tarball/2.0.2#egg=djangocms-versioning
+https://github.com/django-cms/djangocms-alias/tarball/2.0.1#egg=djangocms-alias
+https://github.com/django-cms/djangocms-moderation/tarball/master#egg=djangocms-moderation

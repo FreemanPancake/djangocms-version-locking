@@ -4,11 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from cms.toolbar.items import Button, ButtonList
 
 from djangocms_versioning.cms_toolbars import VersioningToolbar
-
-from djangocms_version_locking.helpers import (
-    content_is_unlocked_for_user,
-    get_lock_for_content,
-)
+from djangocms_versioning.helpers import content_is_unlocked_for_user, version_is_locked
 
 
 class ButtonWithAttributes(Button):
@@ -40,11 +36,11 @@ def new_edit_button(func):
 
         # Populate a title with the locked author details
         html_attributes = {}
-        version_lock = get_lock_for_content(self.toolbar.obj)
+        version_lock = version_is_locked(self.toolbar.obj)
         if version_lock:
             # If the users name is available use it, otherwise use their username
             html_attributes['title'] = _("Locked with {name}").format(
-                name=version_lock.created_by.get_full_name() or version_lock.created_by.username,
+                name=version_lock.locked_by.get_full_name() or version_lock.locked_by.username,
             )
 
         # There is a version lock for the current object.

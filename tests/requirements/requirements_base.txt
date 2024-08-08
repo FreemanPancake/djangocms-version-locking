@@ -7,5 +7,3 @@ flake8
 isort
 mock
 pyflakes>=2.1.1
-
-https://github.com/django-cms/django-cms/tarball/release/4.0.1.x#egg=django-cms

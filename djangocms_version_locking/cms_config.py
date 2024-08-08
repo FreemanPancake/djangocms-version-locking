@@ -5,8 +5,7 @@ from cms.app_base import CMSAppConfig, CMSAppExtension
 
 from djangocms_alias.models import AliasContent
 from djangocms_versioning.constants import DRAFT
-
-from djangocms_version_locking.helpers import version_is_locked
+from djangocms_versioning.helpers import version_is_locked
 
 
 def add_alias_version_lock(obj, field):
