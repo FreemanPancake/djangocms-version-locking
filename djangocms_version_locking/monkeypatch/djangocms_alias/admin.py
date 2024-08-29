@@ -36,6 +36,9 @@ class AliasAdmin(OriginalAliasAdmin):
             name="manage-versions",
             disabled=disabled,
         )
+    
+    def has_delete_permission(self, request: HttpRequest, obj=None):
+        return False
 
 
 admin.site.unregister(Alias)
