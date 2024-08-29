@@ -26,8 +26,12 @@ class VersionLockingCMSExtension(CMSAppExtension):
         # is registered and can be overriden without requiring a strict load order
         # in the INSTALLED_APPS setting in a projects settings.py. This is why this patch
         # Isn't loaded from: VersionLockingConfig.ready
-        from .monkeypatch import admin as monkeypatched_version_admin  # noqa: F401
-        from .monkeypatch.djangocms_alias import admin as monkeypatched_alias_admin  # noqa: F401
+        from .monkeypatch import (  # noqa: F401
+            admin as monkeypatched_version_admin,
+        )
+        from .monkeypatch.djangocms_alias import (  # noqa: F401
+            admin as monkeypatched_alias_admin,
+        )
 
     def configure_app(self, cms_config):
         pass

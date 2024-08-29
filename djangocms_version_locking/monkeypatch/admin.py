@@ -1,12 +1,11 @@
-import json
-
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
 
 from djangocms_versioning.admin import StateIndicatorMixin
 from djangocms_versioning.constants import INDICATOR_DESCRIPTIONS
-from djangocms_versioning.indicators import content_indicator, content_indicator_menu
 from djangocms_versioning.helpers import get_latest_admin_viewable_content
+from djangocms_versioning.indicators import content_indicator
+
 
 def _get_indicator_column(func):
     '''
