@@ -1,7 +1,7 @@
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
 
-from djangocms_versioning.admin import StateIndicatorMixin
+from djangocms_versioning.admin import ExtendedVersionAdminMixin, StateIndicatorMixin
 from djangocms_versioning.constants import INDICATOR_DESCRIPTIONS
 from djangocms_versioning.helpers import get_latest_admin_viewable_content
 from djangocms_versioning.indicators import content_indicator
@@ -32,5 +32,16 @@ def _get_indicator_column(func):
         return indicator
     return inner
 
+def _get_actions_list(func):
+    '''
+    Add `Manage versions` action to versioned admin's action list, State Indicator is ready only.
+    '''
+    def inner(self):
+        actions = func(self)
+        actions.append(self._get_manage_versions_link)
+        return actions
+    return inner
 
+
+ExtendedVersionAdminMixin.get_actions_list = _get_actions_list(ExtendedVersionAdminMixin.get_actions_list)
 StateIndicatorMixin.get_indicator_column = _get_indicator_column(StateIndicatorMixin.get_indicator_column)
