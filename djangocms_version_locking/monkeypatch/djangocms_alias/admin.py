@@ -14,6 +14,9 @@ from djangocms_versioning.helpers import (
 
 
 class AliasAdmin(OriginalAliasAdmin):
+
+    change_list_template = "monkeypatch/cms/admin/cms/grouper/change_list.html"
+
     def get_actions_list(self) -> list:
         """Add alias manage version link"""
         original_list = super().get_actions_list()
