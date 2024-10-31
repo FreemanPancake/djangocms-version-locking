@@ -4,6 +4,9 @@ Changelog
 
 Unreleased
 ==========
+* Dropped Support for Python 3.8
+* Introduced Django CMS 4.1 support.
+
 
 1.3.0 (2024-05-16)
 ==================
