@@ -34,8 +34,8 @@ class AliasAdmin(OriginalAliasAdmin):
         else:  # Content Model
             content_obj = obj
         return content_obj
-    
-    def _get_edit_link(self, obj: Alias, request: HttpRequest, disabled: bool =False):
+
+    def _get_edit_link(self, obj: Alias, request: HttpRequest, disabled: bool = False):
         version = proxy_model(self._get_content_obj(obj).versions.all()[0], self._get_content_obj(obj))
 
         if version.state not in (DRAFT, PUBLISHED):
@@ -78,7 +78,7 @@ class AliasAdmin(OriginalAliasAdmin):
             name="manage-versions",
             disabled=disabled,
         )
-    
+
     def has_delete_permission(self, request: HttpRequest, obj=None):
         return False
 

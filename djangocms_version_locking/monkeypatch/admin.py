@@ -1,7 +1,10 @@
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
 
-from djangocms_versioning.admin import ExtendedVersionAdminMixin, StateIndicatorMixin
+from djangocms_versioning.admin import (
+    ExtendedVersionAdminMixin,
+    StateIndicatorMixin,
+)
 from djangocms_versioning.constants import INDICATOR_DESCRIPTIONS
 from djangocms_versioning.helpers import get_latest_admin_viewable_content
 from djangocms_versioning.indicators import content_indicator
@@ -31,6 +34,7 @@ def _get_indicator_column(func):
         indicator.short_description = self.indicator_column_label
         return indicator
     return inner
+
 
 def _get_actions_list(func):
     '''
