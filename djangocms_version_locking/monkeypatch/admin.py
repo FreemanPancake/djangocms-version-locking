@@ -6,7 +6,10 @@ from djangocms_versioning.admin import (
     StateIndicatorMixin,
 )
 from djangocms_versioning.constants import INDICATOR_DESCRIPTIONS
-from djangocms_versioning.helpers import get_latest_admin_viewable_content, version_list_url
+from djangocms_versioning.helpers import (
+    get_latest_admin_viewable_content,
+    version_list_url,
+)
 from djangocms_versioning.indicators import content_indicator
 
 
@@ -59,6 +62,6 @@ def _get_manage_versions_link(self, obj, request, disabled=False):
     )
 
 
-ExtendedVersionAdminMixin._get_manage_versions_link = _get_manage_versions_link 
+ExtendedVersionAdminMixin._get_manage_versions_link = _get_manage_versions_link
 ExtendedVersionAdminMixin.get_actions_list = _get_actions_list(ExtendedVersionAdminMixin.get_actions_list)
 StateIndicatorMixin.get_indicator_column = _get_indicator_column(StateIndicatorMixin.get_indicator_column)
