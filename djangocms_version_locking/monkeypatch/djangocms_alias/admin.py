@@ -73,7 +73,7 @@ class AliasAdmin(OriginalAliasAdmin):
         url = version_list_url(self._get_content_obj(obj))
         return self.admin_action_button(
             url,
-            icon="copy",
+            icon="list-ol",
             title=_("Manage versions"),
             name="manage-versions",
             disabled=disabled,

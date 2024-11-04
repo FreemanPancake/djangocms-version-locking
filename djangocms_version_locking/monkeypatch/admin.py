@@ -6,7 +6,7 @@ from djangocms_versioning.admin import (
     StateIndicatorMixin,
 )
 from djangocms_versioning.constants import INDICATOR_DESCRIPTIONS
-from djangocms_versioning.helpers import get_latest_admin_viewable_content
+from djangocms_versioning.helpers import get_latest_admin_viewable_content, version_list_url
 from djangocms_versioning.indicators import content_indicator
 
 
@@ -42,10 +42,23 @@ def _get_actions_list(func):
     '''
     def inner(self):
         actions = func(self)
-        actions.append(self._get_manage_versions_link)
+        if self._get_manage_versions_link not in actions:
+            actions.append(self._get_manage_versions_link)
         return actions
     return inner
 
 
+def _get_manage_versions_link(self, obj, request, disabled=False):
+    url = version_list_url(obj)
+    return self.admin_action_button(
+        url,
+        icon="list-ol",
+        title=_("Manage versions"),
+        name="manage-versions",
+        disabled=disabled,
+    )
+
+
+ExtendedVersionAdminMixin._get_manage_versions_link = _get_manage_versions_link 
 ExtendedVersionAdminMixin.get_actions_list = _get_actions_list(ExtendedVersionAdminMixin.get_actions_list)
 StateIndicatorMixin.get_indicator_column = _get_indicator_column(StateIndicatorMixin.get_indicator_column)
