@@ -36,6 +36,9 @@ class AliasAdmin(OriginalAliasAdmin):
         return content_obj
 
     def _get_edit_link(self, obj: Alias, request: HttpRequest, disabled: bool = False):
+        if self._get_content_obj(obj):
+            # Don't display the link if it can't be edited, as the content is empty.
+            return ""
         version = proxy_model(self._get_content_obj(obj).versions.all()[0], self._get_content_obj(obj))
 
         if version.state not in (DRAFT, PUBLISHED):
@@ -70,6 +73,9 @@ class AliasAdmin(OriginalAliasAdmin):
         )
 
     def _get_manage_versions_link(self, obj: Alias, request: HttpRequest, disabled: bool = False):
+        if self._get_content_obj(obj):
+            # Don't display the link if it can't find version list urls, as the content is empty.
+            return ""
         url = version_list_url(self._get_content_obj(obj))
         return self.admin_action_button(
             url,

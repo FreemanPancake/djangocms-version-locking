@@ -9,14 +9,16 @@ from djangocms_versioning.helpers import version_is_locked
 
 
 def add_alias_version_lock(obj, field):
-    version = obj.versions.all()[0]
+    # add None obj check, if the legacy data has empty value.
     lock_icon = ""
-    if version.state == DRAFT and version_is_locked(version):
-        lock_icon = mark_safe('<span class="cms-icon cms-icon-lock"></span>')
+    if obj:
+        version = obj.versions.all()[0]
+        if version.state == DRAFT and version_is_locked(version):
+            lock_icon = mark_safe('<span class="cms-icon cms-icon-lock"></span>')
     return format_html(
         "{is_locked}{field_value}",
         is_locked=lock_icon,
-        field_value=getattr(obj, field),
+        field_value=getattr(obj, field, '-'),
     )
 
 
