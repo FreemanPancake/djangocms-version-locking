@@ -3,6 +3,8 @@ from django.http import HttpRequest
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from cms.utils.urlutils import static_with_version
+
 from djangocms_alias.admin import AliasAdmin as OriginalAliasAdmin
 from djangocms_alias.models import Alias
 from djangocms_versioning.constants import DRAFT, PUBLISHED
@@ -11,9 +13,10 @@ from djangocms_versioning.helpers import (
     proxy_model,
     version_list_url,
 )
+from djangocms_version_locking.utils import AdminActionListMixin
 
 
-class AliasAdmin(OriginalAliasAdmin):
+class AliasAdmin(AdminActionListMixin, OriginalAliasAdmin):
 
     change_list_template = "monkeypatch/cms/admin/cms/grouper/change_list.html"
 
