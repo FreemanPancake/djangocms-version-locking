@@ -73,7 +73,7 @@
           li_anchor.setAttributeNode(href);
           /* move the an image element */
   
-          var existing_icon_span = $(item).children('span');
+          var existing_icon_span = $(item).children('span, img');
           li_anchor.appendChild(existing_icon_span[0]);
           /* create the button text */
   
