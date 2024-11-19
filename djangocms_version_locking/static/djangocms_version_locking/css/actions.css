@@ -102,3 +102,7 @@ ul.cms-pagetree-dropdown-menu-inner li a.inactive {
 .cms-pagetree-dropdown-menu:before {
     margin-top: 13px;
 }
+
+.btn.cms-action-btn.cms-action-burger {
+    margin-left: 4px !important;
+}

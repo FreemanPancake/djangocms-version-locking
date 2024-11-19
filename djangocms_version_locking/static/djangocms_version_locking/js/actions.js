@@ -10,7 +10,7 @@
       /* create burger menu anchor section */
       var anchor = document.createElement('A');
       var cssclass = document.createAttribute('class');
-      cssclass.value = 'btn cms-action-btn closed';
+      cssclass.value = 'btn cms-action-btn closed cms-action-burger';
       anchor.setAttributeNode(cssclass);
       //  create burger menu title
       var title = document.createAttribute('title');
@@ -92,7 +92,7 @@
       
       /* add the options to the drop-down */
       optionsContainer.appendChild(ul);
-      actions[0].appendChild(anchor);
+      $(actions[0]).children('.cms-action-btn:last').after(anchor);
       document.body.appendChild(optionsContainer);
       /* listen for burger menu clicks */
 

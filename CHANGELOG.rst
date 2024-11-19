@@ -7,7 +7,7 @@ Unreleased
 * Dropped Support for Python 3.8
 * Introduced Django CMS 4.1 support.
 * delete `VersionLock` as It's moved to Version.locked_by field.
-* added `AdminActionListMixin` in utils.py file to support action list burger menu.
+* monkeypatch `ChangeListActionsMixin` in cms.admin.utils to support action list burger menu.
 
 
 1.3.0 (2024-05-16)

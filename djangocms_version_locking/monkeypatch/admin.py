@@ -1,6 +1,9 @@
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
 
+from cms.admin.utils import ChangeListActionsMixin
+from cms.utils.urlutils import static_with_version
+
 from djangocms_versioning.admin import (
     ExtendedVersionAdminMixin,
     StateIndicatorMixin,
@@ -61,6 +64,13 @@ def _get_manage_versions_link(self, obj, request, disabled=False):
         disabled=disabled,
     )
 
+
+""" Monkeypatch ChangeListActionsMixin, add action burger menu for action list
+This will enable burger menu feature for ModelAdmin inherits from
+VersionAdmin, ExtendedVersionAdminMixin, GrouperModelAdmin.
+"""
+ChangeListActionsMixin.Media.css["all"]+=(static_with_version("cms/css/cms.pagetree.css"), "djangocms_version_locking/css/actions.css",)
+ChangeListActionsMixin.Media.js+=("admin/js/jquery.init.js", "djangocms_version_locking/js/actions.js",)
 
 ExtendedVersionAdminMixin._get_manage_versions_link = _get_manage_versions_link
 ExtendedVersionAdminMixin.get_actions_list = _get_actions_list(ExtendedVersionAdminMixin.get_actions_list)

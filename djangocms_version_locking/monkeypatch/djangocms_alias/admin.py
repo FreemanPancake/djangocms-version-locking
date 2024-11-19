@@ -13,10 +13,9 @@ from djangocms_versioning.helpers import (
     proxy_model,
     version_list_url,
 )
-from djangocms_version_locking.utils import AdminActionListMixin
 
 
-class AliasAdmin(AdminActionListMixin, OriginalAliasAdmin):
+class AliasAdmin(OriginalAliasAdmin):
 
     change_list_template = "monkeypatch/cms/admin/cms/grouper/change_list.html"
 
