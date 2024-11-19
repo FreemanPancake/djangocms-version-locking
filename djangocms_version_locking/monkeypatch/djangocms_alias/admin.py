@@ -11,9 +11,10 @@ from djangocms_versioning.helpers import (
     proxy_model,
     version_list_url,
 )
+from djangocms_version_locking.utils import get_registered_admin
 
 
-class AliasAdmin(OriginalAliasAdmin):
+class AliasAdmin(get_registered_admin(Alias, OriginalAliasAdmin)):
 
     change_list_template = "monkeypatch/cms/admin/cms/grouper/change_list.html"
 
