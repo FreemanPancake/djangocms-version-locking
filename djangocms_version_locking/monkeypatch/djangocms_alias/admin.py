@@ -3,8 +3,6 @@ from django.http import HttpRequest
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from cms.utils.urlutils import static_with_version
-
 from djangocms_alias.admin import AliasAdmin as OriginalAliasAdmin
 from djangocms_alias.models import Alias
 from djangocms_versioning.constants import DRAFT, PUBLISHED

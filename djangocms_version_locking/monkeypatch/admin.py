@@ -69,8 +69,11 @@ def _get_manage_versions_link(self, obj, request, disabled=False):
 This will enable burger menu feature for ModelAdmin inherits from
 VersionAdmin, ExtendedVersionAdminMixin, GrouperModelAdmin.
 """
-ChangeListActionsMixin.Media.css["all"]+=(static_with_version("cms/css/cms.pagetree.css"), "djangocms_version_locking/css/actions.css",)
-ChangeListActionsMixin.Media.js+=("admin/js/jquery.init.js", "djangocms_version_locking/js/actions.js",)
+ChangeListActionsMixin.Media.css["all"] += (
+    static_with_version("cms/css/cms.pagetree.css"),
+    "djangocms_version_locking/css/actions.css",
+)
+ChangeListActionsMixin.Media.js += ("admin/js/jquery.init.js", "djangocms_version_locking/js/actions.js",)
 
 ExtendedVersionAdminMixin._get_manage_versions_link = _get_manage_versions_link
 ExtendedVersionAdminMixin.get_actions_list = _get_actions_list(ExtendedVersionAdminMixin.get_actions_list)
