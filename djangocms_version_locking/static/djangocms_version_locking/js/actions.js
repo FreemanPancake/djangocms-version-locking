@@ -92,10 +92,15 @@
       
       /* add the options to the drop-down */
       optionsContainer.appendChild(ul);
-      $(actions[0]).children('.cms-action-btn:last').after(anchor);
+      var action_children = $(actions[0]).children();
+      if (action_children.length > 0 && action_children.last().prop('classList').length < 1) {
+        $(actions[0]).children().last().before(anchor)
+      } else {
+        actions[0].appendChild(anchor)
+      }
       document.body.appendChild(optionsContainer);
-      /* listen for burger menu clicks */
 
+      /* listen for burger menu clicks */
       anchor.addEventListener('click', function (ev) {
         ev.stopPropagation();
         toggleBurgerMenu(anchor, optionsContainer);
