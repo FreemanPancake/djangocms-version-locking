@@ -5,6 +5,7 @@ Changelog
 Unreleased
 ==========
 * Dropped Support for Python 3.8
+* Dropped Support for Django CMS < 4.1
 * Introduced Django CMS 4.1 support.
 * delete `VersionLock` as It's moved to Version.locked_by field.
 * monkeypatch `ChangeListActionsMixin` in cms.admin.utils to support action list burger menu.
